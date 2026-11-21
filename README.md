@@ -13,17 +13,17 @@ Sentinel AI addresses this problem uses semantic similarity search.
 
 # **Features**
 
-Converts incident descriptions into numerical embeddings using Sentence Transformers.
+1. Converts incident descriptions into numerical embeddings using Sentence Transformers.
 
-Uses cosine similarity to measure semantic similarity between incidents.
+2. Uses cosine similarity to measure semantic similarity between incidents.
 
-Retrieves the top-K most relevant historical incidents.
+3. Retrieves the top-K most relevant historical incidents.
 
-Exposes AI-powered search functionality through FastAPI REST APIs.
+4. Exposes AI-powered search functionality through FastAPI REST APIs.
 
-Validates incoming API requests using Pydantic.
+5. Validates incoming API requests using Pydantic.
 
-Provides interactive API testing through Swagger UI.
+6. Provides interactive API testing through Swagger UI.
 
 
 
