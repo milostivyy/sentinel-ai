@@ -26,7 +26,19 @@ def get_all_incidents():
                            FROM incidents
                            ORDER BY similarity_score DESC
                            """)
-            incidents=cursor.fetchall()
+            rows=cursor.fetchall() #returns rows as tuples by default when using a regular psycopg2 cursor.
+            incidents=[]
+            #so we convert each row to a dictionary.
+            for row in rows:
+                incidents.append({
+                    "id":row[0],
+                    "description":row[1],
+                    "predicted_category":row[2],
+                    "similarity_score":row[3],
+                    "created_at":row[4]
+                })
+            # Now we can access values using readable keys like incident["description"].
+            cursor.close()
             return incidents
     except psycopg2.Error as e:
         print("Error connecting to the databsase:", e)
