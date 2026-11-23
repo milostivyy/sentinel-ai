@@ -13,7 +13,7 @@ def get_connection():
         return connection
     except psycopg2.Error as e:
         print("Error connecting to the databsase:", e)
-        return None
+        return []
     
 def get_all_incidents():
     connection=get_connection()
@@ -24,7 +24,6 @@ def get_all_incidents():
             cursor.execute("""
                            SELECT id, description, predicted_category,similarity_score,created_at
                            FROM incidents
-                           ORDER BY similarity_score DESC
                            """)
             rows=cursor.fetchall() #returns rows as tuples by default when using a regular psycopg2 cursor.
             incidents=[]
@@ -42,7 +41,7 @@ def get_all_incidents():
             return incidents
     except psycopg2.Error as e:
         print("Error connecting to the databsase:", e)
-        return None
+        return []
     finally:
         connection.close()
 

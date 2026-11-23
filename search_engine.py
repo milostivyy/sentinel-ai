@@ -51,28 +51,32 @@ model = SentenceTransformer('all-MiniLM-L6-v2')
 
 #This is for the database version of the search engine. It fetches incidents from the database and generates embeddings for them. It then uses these embeddings to find similar incidents based on a query.
 
-def search_incidents(query:str,top_k:int):
+def search_incidents(query:str,top_k:int=3):
     incidents=get_all_incidents()
     if not incidents:
         return []
     descriptions=[incident["description"] for incident in incidents]
     incident_embeddings=model.encode(descriptions,normalize_embeddings=True)
     query_incident_embeddings=model.encode([query],normalize_embeddings=True)
-    similarities=np.dot(incident_embeddings,query_incident_embeddings.T)
+    similarities=np.dot(incident_embeddings,query_incident_embeddings.T).flatten() #flattened similarities array because it is a 2D NumPy array not a 1D array.
+    #so it will return individual integer indicies.
     ranked_indicies=np.argsort(similarities)[::-1][:top_k]
     result=[]
+    #print("Incidents type:", type(incidents))
+    #incidents=dict(incidents)
     for index in ranked_indicies:
+        incident = incidents[index]
         result.append({
-            "id":incidents[index]["id"],
-            "description":incidents[index]["description"],
-            "predicted_category":incidents[index]["predicted_cateogory"],
-            "similarity_score":round(float(similarities[index][0]),4)
+            "id":incident["id"],
+            "description":incident["description"],
+            "predicted_category":incident["predicted_category"],
+            "similarity_score":round(float(similarities[index]),3)
         })
-        return result
+    return result
     
 
 
-    
+
 
 
     
