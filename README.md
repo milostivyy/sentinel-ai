@@ -18,17 +18,31 @@ Semantic Sentinel AI addresses this problem through semantic retrieval, vector s
 
 # **Features**
 
-1. Converts incident descriptions into numerical embeddings using Sentence Transformers.
+1. Generates semantic embeddings using Sentence Transformers.
 
-2. Uses cosine similarity to measure semantic similarity between incidents.
+2. Measures semantic similarity using cosine similarity.
 
-3. Retrieves the top-K most relevant historical incidents.
+3. Retrieves Top-K relevant historical incidents.
 
-4. Exposes AI-powered search functionality through FastAPI REST APIs.
+4. Fetches incident records from PostgreSQL.
 
-5. Validates incoming API requests using Pydantic.
+5. Exposes search functionality through FastAPI REST APIs.
 
-6. Provides interactive API testing through Swagger UI.
+6. Validates API requests using Pydantic.
+
+7. Supports interactive API testing through Swagger UI.
+
+# **Upcoming Features**
+
+8. Vector similarity search using PostgreSQL and pgvector.
+
+9. Similarity thresholding and relevance filtering.
+
+10. LLM-powered incident summarization and root cause analysis.
+
+11. Retrieval-Augmented Generation (RAG) for context-aware recommendations.
+
+12. Production-ready backend with logging, monitoring, and optimized database queries
 
 
 
