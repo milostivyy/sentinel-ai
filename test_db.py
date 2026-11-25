@@ -6,4 +6,8 @@ if connection:
 incidents=get_all_incidents()
 print("Historical incidents are as follows:")
 for incident in incidents:
-    print(incident)
+    print(f"Incident ID: {incident['id']}")
+    print(f"Description: {incident['description']}")
+    print(f"Category: {incident['predicted_category']}")
+    print("-" * 30)
+
