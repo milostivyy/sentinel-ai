@@ -45,6 +45,22 @@ def get_all_incidents():
     finally:
         connection.close()
 
+#funtion to insert all incidents
+def insert_incidents(incidents):
+    conn=get_connection()
+    if conn is None:
+        return []
+    cursor=conn.cursor()
+    for incident in incidents:
+        cursor.execute("""
+                        INSERT INTO incidents(description,predicted_category)
+                        VALUES(%s, %s)
+                        """,
+                        (incident["description"] , incident["category"])
+        )
+    conn.commit()
+    cursor.close()
+    conn.close()
 
     
 
