@@ -55,6 +55,7 @@ def insert_incidents(incidents):
         cursor.execute("""
                         INSERT INTO incidents(description,predicted_category)
                         VALUES(%s, %s)
+                        ON CONFLICT (description) DO NOTHING
                         """,
                         (incident["description"] , incident["category"])
         )
