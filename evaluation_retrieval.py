@@ -26,19 +26,18 @@ for item in evaluation_data:
     recall=recall_at_k(retrieved_ids,relevant_ids,3)
     precision_scores.append(precision)
     recall_scores.append(recall)
+    print(f"Query is: {query}")
+    print(f"Relevant Ids are: {relevant_ids}")
+    print(f"Retrieved Ids are: {retrieved_ids}")
+    print(f"Precision is: {round(precision,3)}")
+    print(f"Recall is: {round(recall,3)}")
+    print("=" * 60)
 
-print(f"Query is: {query}")
-print(f"Relevant Ids are: {relevant_ids}")
-print(f"Retrieved Ids are: {retrieved_ids}")
-print(f"Precision is: {round(precision,3)}")
-print(f"Recall is: {round(recall,3)}")
-print("=" * 60)
-
-print(f"Precision Score is: {precision_scores}")
-print(f"Recall Scores: {recall_scores}")
-
-print(f"Average Precision Score is: {round(sum(precision_scores)/(len(precision_scores)),3)}")
-print(f"Average Recall Score is: {round(sum(recall_scores)/(len(recall_scores)),3)}")
+if evaluation_data:
+    print(f"Precision Score is: {precision_scores}")
+    print(f"Recall Scores: {recall_scores}")
+    print(f"Average Precision Score is: {round(sum(precision_scores)/(len(precision_scores)),3)}")
+    print(f"Average Recall Score is: {round(sum(recall_scores)/(len(recall_scores)),3)}")
 
 
 
